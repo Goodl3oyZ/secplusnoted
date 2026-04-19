@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompTIA Security+ SY0-701 — Complete Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090f;--bg2:#0f1219;--bg3:#171d2b;--bg4:#1e2535;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#dde6f0;--muted:#5f6e85;--dim:#3a4558;
+  --d1:#e879f9;--d1bg:rgba(232,121,249,0.07);--d1b:rgba(232,121,249,0.22);
+  --d2:#f97316;--d2bg:rgba(249,115,22,0.07);--d2b:rgba(249,115,22,0.22);
+  --d3:#22d3ee;--d3bg:rgba(34,211,238,0.07);--d3b:rgba(34,211,238,0.22);
+  --d4:#4ade80;--d4bg:rgba(74,222,128,0.07);--d4b:rgba(74,222,128,0.22);
+  --d5:#fbbf24;--d5bg:rgba(251,191,36,0.07);--d5b:rgba(251,191,36,0.22);
+  --red:#f87171;--redbg:rgba(248,113,113,0.08);--redb:rgba(248,113,113,0.22);
+  --green:#34d399;--greenbg:rgba(52,211,153,0.08);--greenb:rgba(52,211,153,0.22);
+  --blue:#60a5fa;--bluebg:rgba(96,165,250,0.08);--blueb:rgba(96,165,250,0.22);
+  --yellow:#fde047;--yellowbg:rgba(253,224,71,0.08);--yellowb:rgba(253,224,71,0.22);
+  --font:'Sora',sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.65}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:2px}
+a{color:inherit;text-decoration:none}
+
+/* HERO */
+.hero{padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(232,121,249,0.09),transparent),radial-gradient(ellipse 40% 30% at 80% 60%,rgba(34,211,238,0.05),transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--d1bg);border:1px solid var(--d1b);color:var(--d1);border-radius:20px;padding:4px 16px;font-size:11px;font-family:var(--mono);letter-spacing:0.06em;margin-bottom:1.25rem}
+.hero h1{font-size:clamp(1.8rem,4.5vw,3rem);font-weight:600;letter-spacing:-0.04em;line-height:1.15;margin-bottom:0.6rem}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--d1),var(--d3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--muted);font-size:13px;margin-bottom:2rem;max-width:580px;margin-left:auto;margin-right:auto}
+.stats-row{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-n{font-size:1.8rem;font-weight:600;font-family:var(--mono);color:var(--d1)}
+.stat-l{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* STICKY NAV */
+.snav{position:sticky;top:0;z-index:200;background:rgba(7,9,15,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.55rem 1rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.snav-search{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--border2);border-radius:7px;padding:6px 12px;color:var(--text);font-size:13px;font-family:var(--font);outline:none;transition:border-color 0.2s}
+.snav-search:focus{border-color:var(--d1)}
+.chip{padding:4px 11px;border-radius:20px;font-size:11px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s;white-space:nowrap}
+.chip.on{border-color:var(--d1);color:var(--d1);background:var(--d1bg)}
+.jmp{font-size:10px;font-family:var(--mono);color:var(--muted);padding:3px 8px;border-radius:4px;border:1px solid var(--border);transition:all 0.15s;white-space:nowrap}
+.jmp:hover{color:var(--d1);border-color:var(--d1b)}
+
+/* LAYOUT */
+.wrap{max-width:1160px;margin:0 auto;padding:2rem 1rem}
+.sec-title{font-size:10px;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* DOMAIN OVERVIEW */
+.domain-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:2.5rem}
+.dov{border-radius:10px;padding:1rem;border:1px solid;position:relative;overflow:hidden}
+.dov::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;border-radius:50%;opacity:0.08;transform:translate(20px,-20px)}
+.dov-pct{font-size:2rem;font-weight:600;font-family:var(--mono);margin-bottom:2px}
+.dov-num{font-size:10px;font-family:var(--mono);opacity:0.6;margin-bottom:4px}
+.dov-name{font-size:12px;font-weight:500;line-height:1.3}
+
+/* QUICK REF GRID */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px;margin-bottom:2rem}
+.qcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;overflow:hidden}
+.qcard h3{font-size:12px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted)}
+.qcard h3 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* TABLES */
+.rt{width:100%;border-collapse:collapse;font-size:12px}
+.rt th{text-align:left;padding:5px 8px;font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);border-bottom:1px solid var(--border)}
+.rt td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,0.03);vertical-align:top}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:rgba(255,255,255,0.02)}
+.mono{font-family:var(--mono);font-size:11px}
+.badge{display:inline-block;font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:3px;white-space:nowrap}
+.b-red{background:var(--redbg);color:var(--red)}
+.b-green{background:var(--greenbg);color:var(--green)}
+.b-blue{background:var(--bluebg);color:var(--blue)}
+.b-yellow{background:var(--yellowbg);color:var(--yellow)}
+.b-purple{background:var(--d1bg);color:var(--d1)}
+.b-cyan{background:var(--d3bg);color:var(--d3)}
+.b-orange{background:var(--d2bg);color:var(--d2)}
+
+/* DOMAIN CARDS */
+.dcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:border-color 0.2s}
+.dcard:hover{border-color:var(--border2)}
+.dcard.hidden{display:none}
+.dcard-hdr{display:flex;align-items:center;gap:12px;padding:1rem 1.25rem;cursor:pointer;user-select:none}
+.dcard-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:var(--mono);flex-shrink:0;border:1px solid}
+.dcard-info{flex:1}
+.dcard-domain{font-size:10px;font-family:var(--mono);margin-bottom:2px;opacity:0.7}
+.dcard-title{font-size:14px;font-weight:600}
+.dcard-pct{font-size:11px;font-family:var(--mono);margin-left:auto;padding:3px 10px;border-radius:5px;border:1px solid}
+.chev{color:var(--muted);font-size:11px;transition:transform 0.2s;flex-shrink:0;margin-left:8px}
+.dcard-body{display:none;border-top:1px solid var(--border);padding:1.25rem}
+.dcard-body.open{display:block}
+
+/* SECTIONS INSIDE CARD */
+.dsec{margin-bottom:1.5rem}
+.dsec:last-child{margin-bottom:0}
+.dsec-label{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:3px 9px;border-radius:5px;font-family:var(--mono);line-height:1.4;border:1px solid transparent}
+.tag.k{background:var(--bluebg);color:var(--blue);border-color:var(--blueb)}
+.tag.a{background:var(--greenbg);color:var(--green);border-color:var(--greenb)}
+.tag.t{background:var(--redbg);color:var(--red);border-color:var(--redb)}
+.tag.c{background:var(--d1bg);color:var(--d1);border-color:var(--d1b)}
+.tag.tool{background:var(--d5bg);color:var(--d5);border-color:var(--d5b)}
+
+/* SUBTOPIC GRID */
+.subtopic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:10px}
+.sub-box{background:var(--bg3);border-radius:8px;padding:0.9rem;border:1px solid var(--border)}
+.sub-box h4{font-size:12px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sub-list{list-style:none;display:flex;flex-direction:column;gap:3px}
+.sub-list li{font-size:11px;color:var(--muted);padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:flex-start;gap:6px}
+.sub-list li::before{content:'›';color:var(--dim);flex-shrink:0;margin-top:1px}
+.sub-list li span{color:var(--text)}
+
+/* TIP BOX */
+.tip{background:rgba(251,191,36,0.06);border-left:3px solid var(--d5);border-radius:0 8px 8px 0;padding:8px 12px;font-size:11px;color:rgba(251,191,36,0.9);margin-top:12px}
+.tip strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;opacity:0.7}
+
+/* ATTACK MATRIX */
+.atk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
+.atk-box{background:var(--bg3);border:1px solid var(--redb);border-radius:8px;padding:0.8rem}
+.atk-box h4{font-size:11px;font-weight:600;color:var(--red);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em}
+.atk-list{list-style:none;display:flex;flex-direction:column;gap:3px}
+.atk-list li{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:flex-start;border-bottom:1px solid rgba(248,113,113,0.06);padding:2px 0}
+.atk-list li:last-child{border-bottom:none}
+.atk-list li span{color:var(--text)}
+
+/* PORT TABLE */
+.port-tbl{display:grid;grid-template-columns:auto 1fr auto;gap:3px;font-size:11px;align-items:center}
+.pt-num{font-family:var(--mono);color:var(--blue);background:var(--bluebg);padding:2px 6px;border-radius:3px;text-align:center}
+.pt-name{padding:2px 6px}
+.pt-proto{font-family:var(--mono);font-size:10px}
+
+/* CRYPTO SECTION */
+.crypto-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* COMPLIANCE */
+.compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.comp-box{background:var(--bg3);border-radius:8px;padding:0.9rem;border:1px solid var(--border)}
+.comp-box h4{font-size:12px;font-weight:600;color:var(--d5);margin-bottom:6px}
+.comp-box p{font-size:11px;color:var(--muted);line-height:1.5}
+.comp-box .tags{margin-top:6px}
+
+/* INCIDENT RESPONSE */
+.ir-steps{display:flex;gap:0;overflow-x:auto;padding-bottom:4px}
+.ir-step{flex:1;min-width:110px;background:var(--bg3);padding:0.75rem;text-align:center;border:1px solid var(--border);position:relative}
+.ir-step:first-child{border-radius:8px 0 0 8px}
+.ir-step:last-child{border-radius:0 8px 8px 0}
+.ir-step+.ir-step{border-left:none}
+.ir-step-num{font-family:var(--mono);font-size:10px;color:var(--d3);margin-bottom:4px}
+.ir-step-name{font-size:12px;font-weight:600;margin-bottom:4px}
+.ir-step-desc{font-size:10px;color:var(--muted);line-height:1.4}
+
+/* EXAM WEIGHTS BAR */
+.weight-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-bottom:0.5rem}
+.wb-d1{background:var(--d1);flex:12}
+.wb-d2{background:var(--d2);flex:22}
+.wb-d3{background:var(--d3);flex:18}
+.wb-d4{background:var(--d4);flex:28}
+.wb-d5{background:var(--d5);flex:20}
+
+/* MITRE */
+.mitre-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;font-size:11px}
+.mitre-cell{background:var(--bg3);border-radius:6px;padding:6px 8px;border:1px solid var(--border)}
+.mitre-cell .phase{font-size:9px;font-family:var(--mono);color:var(--d1);margin-bottom:3px;text-transform:uppercase}
+.mitre-cell ul{list-style:none;color:var(--muted)}
+.mitre-cell ul li{padding:1px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.mitre-cell ul li:last-child{border-bottom:none}
+
+/* FOOTER */
+.footer{text-align:center;padding:2rem;color:var(--muted);font-size:11px;border-top:1px solid var(--border);margin-top:2rem}
+
+@media(max-width:640px){
+  .qgrid{grid-template-columns:1fr}
+  .crypto-compare{grid-template-columns:1fr}
+  .stats-row{gap:1.25rem}
+  .hero h1{font-size:1.6rem}
+  .ir-steps{flex-direction:column}
+  .ir-step{border-radius:0!important;border-left:1px solid var(--border)!important}
+  .ir-step+.ir-step{border-top:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">◈ CompTIA Security+ SY0-701 · 2024/2025</div>
+  <h1>Security<em>+</em> Complete<br>Reference Guide</h1>
+  <p class="hero-sub">All 5 Domains · Attack Types · Cryptography · Protocols · Tools · Compliance · Exam Tips — Everything in One File</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">Domains</div></div>
+    <div class="stat"><div class="stat-n">90</div><div class="stat-l">Exam Questions</div></div>
+    <div class="stat"><div class="stat-n">750</div><div class="stat-l">Passing Score / 900</div></div>
+    <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Keywords & Abbrs</div></div>
+    <div class="stat"><div class="stat-n">90</div><div class="stat-l">Minutes</div></div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="snav">
+  <input class="snav-search" id="search" placeholder="🔍 Search keyword, attack, tool, acronym..." oninput="filterDomains()">
+  <div style="display:flex;gap:5px;flex-wrap:wrap">
+    <span class="chip on" data-f="all" onclick="setFilter(this,'all')">All</span>
+    <span class="chip" data-f="k" onclick="setFilter(this,'k')">Concepts</span>
+    <span class="chip" data-f="a" onclick="setFilter(this,'a')">Acronyms</span>
+    <span class="chip" data-f="t" onclick="setFilter(this,'t')">Attacks</span>
+    <span class="chip" data-f="tool" onclick="setFilter(this,'tool')">Tools</span>
+  </div>
+  <div style="display:flex;gap:4px;flex-wrap:wrap">
+    <a class="jmp" href="#overview">Overview</a>
+    <a class="jmp" href="#quickref">Quick Ref</a>
+    <a class="jmp" href="#attacks">Attacks</a>
+    <a class="jmp" href="#crypto">Crypto</a>
+    <a class="jmp" href="#ports">Ports</a>
+    <a class="jmp" href="#ir">IR</a>
+    <a class="jmp" href="#compliance">Compliance</a>
+    <a class="jmp" href="#domains">Domains</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- DOMAIN OVERVIEW -->
+<div class="sec-title" id="overview">EXAM DOMAIN OVERVIEW — SY0-701</div>
+<div style="margin-bottom:1rem">
+  <div class="weight-bar"><div class="wb-d1"></div><div class="wb-d2"></div><div class="wb-d3"></div><div class="wb-d4"></div><div class="wb-d5"></div></div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:10px;font-family:var(--mono);color:var(--muted)">
+    <span style="color:var(--d1)">■ D1: 12%</span>
+    <span style="color:var(--d2)">■ D2: 22%</span>
+    <span style="color:var(--d3)">■ D3: 18%</span>
+    <span style="color:var(--d4)">■ D4: 28%</span>
+    <span style="color:var(--d5)">■ D5: 20%</span>
+  </div>
+</div>
+<div class="domain-overview">
+  <div class="dov" style="background:var(--d1bg);border-color:var(--d1b)">
+    <div class="dov-pct" style="color:var(--d1)">12%</div>
+    <div class="dov-num" style="color:var(--d1)">Domain 1</div>
+    <div class="dov-name">General Security Concepts</div>
+  </div>
+  <div class="dov" style="background:var(--d2bg);border-color:var(--d2b)">
+    <div class="dov-pct" style="color:var(--d2)">22%</div>
+    <div class="dov-num" style="color:var(--d2)">Domain 2</div>
+    <div class="dov-name">Threats, Vulnerabilities & Mitigations</div>
+  </div>
+  <div class="dov" style="background:var(--d3bg);border-color:var(--d3b)">
+    <div class="dov-pct" style="color:var(--d3)">18%</div>
+    <div class="dov-num" style="color:var(--d3)">Domain 3</div>
+    <div class="dov-name">Security Architecture</div>
+  </div>
+  <div class="dov" style="background:var(--d4bg);border-color:var(--d4b)">
+    <div class="dov-pct" style="color:var(--d4)">28%</div>
+    <div class="dov-num" style="color:var(--d4)">Domain 4</div>
+    <div class="dov-name">Security Operations</div>
+  </div>
+  <div class="dov" style="background:var(--d5bg);border-color:var(--d5b)">
+    <div class="dov-pct" style="color:var(--d5)">20%</div>
+    <div class="dov-num" style="color:var(--d5)">Domain 5</div>
+    <div class="dov-name">Security Program Management & Oversight</div>
+  </div>
+</div>
+
+<!-- QUICK REFERENCE -->
+<div class="sec-title" id="quickref">QUICK REFERENCE — CORE CONCEPTS</div>
+<div class="qgrid">
+
+  <!-- CIA TRIAD -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d1)"></span>CIA Triad + AAA Framework</h3>
+    <table class="rt">
+      <tr><th>Pillar</th><th>Definition</th><th>Controls</th></tr>
+      <tr><td style="color:var(--blue);font-weight:600">Confidentiality</td><td>Only authorized can access data</td><td>Encryption, ACL, MFA, Least Privilege</td></tr>
+      <tr><td style="color:var(--green);font-weight:600">Integrity</td><td>Data not altered without authorization</td><td>Hashing, Digital Signatures, WORM</td></tr>
+      <tr><td style="color:var(--yellow);font-weight:600">Availability</td><td>Systems accessible when needed</td><td>Redundancy, Backup, DDoS protection, HA</td></tr>
+    </table>
+    <div style="margin-top:1rem">
+      <table class="rt">
+        <tr><th>AAA Component</th><th>What It Does</th><th>Example</th></tr>
+        <tr><td style="color:var(--d1)">Authentication</td><td>Verify identity (who you are)</td><td>Password, MFA, Certificate</td></tr>
+        <tr><td style="color:var(--d3)">Authorization</td><td>Grant access (what you can do)</td><td>RBAC, ACL, Policy</td></tr>
+        <tr><td style="color:var(--d5)">Accounting</td><td>Track activity (audit/log)</td><td>Syslog, SIEM, Audit Trail</td></tr>
+      </table>
+    </div>
+    <div style="margin-top:0.8rem;font-size:11px;color:var(--muted)">
+      Non-repudiation = Cannot deny an action occurred (Digital Signature + Audit Log)
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION FACTORS -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d3)"></span>Authentication Factors & Methods</h3>
+    <table class="rt">
+      <tr><th>Factor</th><th>Type</th><th>Examples</th></tr>
+      <tr><td style="color:var(--blue)">Something you <b>know</b></td><td>Knowledge</td><td>Password, PIN, Security Q</td></tr>
+      <tr><td style="color:var(--green)">Something you <b>have</b></td><td>Possession</td><td>Smart card, Token, Phone OTP</td></tr>
+      <tr><td style="color:var(--yellow)">Something you <b>are</b></td><td>Inherence</td><td>Fingerprint, Retina, Face, Voice</td></tr>
+      <tr><td style="color:var(--d1)">Somewhere you <b>are</b></td><td>Location</td><td>GPS, IP Geolocation</td></tr>
+      <tr><td style="color:var(--d2)">Something you <b>do</b></td><td>Behavior</td><td>Keystroke dynamics, Signature</td></tr>
+    </table>
+    <div style="margin-top:0.9rem">
+      <table class="rt">
+        <tr><th>Method</th><th>Description</th></tr>
+        <tr><td class="mono" style="color:var(--d3)">MFA</td><td>2+ different factor types</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">2FA</td><td>Exactly 2 factors</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">SSO</td><td>One login, many systems</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">SAML</td><td>XML-based SSO federation</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">OAuth 2.0</td><td>Authorization delegation</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">OpenID Connect</td><td>Authentication over OAuth</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">FIDO2/WebAuthn</td><td>Passwordless standard</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">Kerberos</td><td>Ticket-based auth (AD)</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">RADIUS/TACACS+</td><td>Centralized AAA</td></tr>
+        <tr><td class="mono" style="color:var(--d3)">LDAP</td><td>Directory auth (TCP 389)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- WELL KNOWN PORTS - SECURITY -->
+  <div class="qcard" id="ports">
+    <h3><span class="dot" style="background:var(--d2)"></span>Critical Security Ports</h3>
+    <div class="port-tbl">
+      <span class="pt-num">21</span><span class="pt-name">FTP (insecure file transfer)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">22</span><span class="pt-name">SSH / SFTP / SCP (secure remote)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">23</span><span class="pt-name">Telnet (insecure — replace with SSH)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">25</span><span class="pt-name">SMTP (email send)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">53</span><span class="pt-name">DNS (can be poisoned)</span><span class="pt-proto" style="color:var(--yellow)">TCP/UDP</span>
+      <span class="pt-num">67/68</span><span class="pt-name">DHCP (rogue server attack)</span><span class="pt-proto" style="color:var(--blue)">UDP</span>
+      <span class="pt-num">80</span><span class="pt-name">HTTP (unencrypted web)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">88</span><span class="pt-name">Kerberos (ticket-based auth)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">110</span><span class="pt-name">POP3 (email receive)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">135</span><span class="pt-name">RPC / DCOM (Windows)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">137-139</span><span class="pt-name">NetBIOS (legacy Windows)</span><span class="pt-proto" style="color:var(--yellow)">TCP/UDP</span>
+      <span class="pt-num">143</span><span class="pt-name">IMAP (email access)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">161/162</span><span class="pt-name">SNMP (network mgmt)</span><span class="pt-proto" style="color:var(--blue)">UDP</span>
+      <span class="pt-num">389</span><span class="pt-name">LDAP (directory services)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">443</span><span class="pt-name">HTTPS / TLS (encrypted web)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">445</span><span class="pt-name">SMB (file sharing — EternalBlue)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">465/587</span><span class="pt-name">SMTPS (email secure)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">514</span><span class="pt-name">Syslog (logging)</span><span class="pt-proto" style="color:var(--blue)">UDP</span>
+      <span class="pt-num">636</span><span class="pt-name">LDAPS (secure LDAP)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">993</span><span class="pt-name">IMAPS (secure IMAP)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">995</span><span class="pt-name">POP3S (secure POP3)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">1433</span><span class="pt-name">MS SQL Server</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">1521</span><span class="pt-name">Oracle DB</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">3306</span><span class="pt-name">MySQL / MariaDB</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">3389</span><span class="pt-name">RDP (Remote Desktop — high risk)</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">5060/5061</span><span class="pt-name">SIP (VoIP)</span><span class="pt-proto" style="color:var(--yellow)">TCP/UDP</span>
+      <span class="pt-num">6514</span><span class="pt-name">Syslog over TLS</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+      <span class="pt-num">8080/8443</span><span class="pt-name">Alt HTTP/HTTPS proxy</span><span class="pt-proto" style="color:var(--red)">TCP</span>
+    </div>
+  </div>
+
+  <!-- CRYPTOGRAPHY -->
+  <div class="qcard" id="crypto">
+    <h3><span class="dot" style="background:var(--d1)"></span>Cryptography — Algorithms & Key Sizes</h3>
+    <div style="margin-bottom:0.75rem">
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:5px">Symmetric Encryption (same key encrypt/decrypt — fast)</div>
+      <table class="rt">
+        <tr><th>Algorithm</th><th>Key Size</th><th>Block</th><th>Notes</th></tr>
+        <tr><td class="mono" style="color:var(--green)">AES</td><td>128/192/256-bit</td><td>128-bit</td><td>✅ Standard, FIPS approved</td></tr>
+        <tr><td class="mono" style="color:var(--green)">3DES/TDEA</td><td>112/168-bit</td><td>64-bit</td><td>⚠️ Legacy, being phased out</td></tr>
+        <tr><td class="mono" style="color:var(--red)">DES</td><td>56-bit</td><td>64-bit</td><td>❌ Broken — do not use</td></tr>
+        <tr><td class="mono" style="color:var(--green)">ChaCha20</td><td>256-bit</td><td>Stream</td><td>✅ TLS 1.3, mobile devices</td></tr>
+        <tr><td class="mono" style="color:var(--green)">Blowfish</td><td>32–448-bit</td><td>64-bit</td><td>Legacy, replaced by AES</td></tr>
+        <tr><td class="mono" style="color:var(--green)">RC4</td><td>40–2048-bit</td><td>Stream</td><td>❌ Broken (WEP, old TLS)</td></tr>
+      </table>
+    </div>
+    <div style="margin-bottom:0.75rem">
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:5px">Asymmetric Encryption (key pair: public/private — slow)</div>
+      <table class="rt">
+        <tr><th>Algorithm</th><th>Key Size</th><th>Use</th></tr>
+        <tr><td class="mono" style="color:var(--d1)">RSA</td><td>2048/4096-bit min</td><td>Encrypt, Digital Signature, Key Exchange</td></tr>
+        <tr><td class="mono" style="color:var(--d1)">ECC</td><td>256-bit ≈ RSA 3072</td><td>Smaller key, same strength — TLS, Mobile</td></tr>
+        <tr><td class="mono" style="color:var(--d1)">ECDSA</td><td>256/384/521-bit</td><td>Digital signatures (faster than RSA)</td></tr>
+        <tr><td class="mono" style="color:var(--d1)">DSA</td><td>1024/2048-bit</td><td>Digital signatures only</td></tr>
+        <tr><td class="mono" style="color:var(--d1)">DH / ECDH</td><td>2048+/256+ bit</td><td>Key exchange (not encryption)</td></tr>
+        <tr><td class="mono" style="color:var(--d1)">ElGamal</td><td>1024+ bit</td><td>GPG encryption</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:5px">Hashing Algorithms (one-way, verify integrity)</div>
+      <table class="rt">
+        <tr><th>Algorithm</th><th>Output Size</th><th>Status</th></tr>
+        <tr><td class="mono" style="color:var(--yellow)">MD5</td><td>128-bit (32 hex)</td><td><span class="badge b-red">Broken/Collision</span> File checksums only</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">SHA-1</td><td>160-bit (40 hex)</td><td><span class="badge b-red">Deprecated</span> Collision attacks known</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">SHA-256</td><td>256-bit (64 hex)</td><td><span class="badge b-green">Recommended</span> TLS, Code signing</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">SHA-384</td><td>384-bit</td><td><span class="badge b-green">Strong</span> Higher security contexts</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">SHA-512</td><td>512-bit</td><td><span class="badge b-green">Strong</span> Certificates, Passwords</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">SHA-3</td><td>224–512-bit</td><td><span class="badge b-green">Modern</span> NIST standard, diff structure</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">bcrypt</td><td>60-char</td><td><span class="badge b-green">Passwords</span> Salted + work factor</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">PBKDF2</td><td>Variable</td><td><span class="badge b-green">Passwords</span> Iterated hashing</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">HMAC</td><td>Same as base hash</td><td>Message authentication (keyed hash)</td></tr>
+        <tr><td class="mono" style="color:var(--yellow)">RIPEMD-160</td><td>160-bit</td><td>Bitcoin addresses</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- TLS / PKI -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d3)"></span>TLS / PKI / Certificate Concepts</h3>
+    <table class="rt" style="margin-bottom:0.75rem">
+      <tr><th>TLS Version</th><th>Status</th><th>Notes</th></tr>
+      <tr><td class="mono">SSL 2.0/3.0</td><td><span class="badge b-red">❌ Broken</span></td><td>POODLE, deprecated</td></tr>
+      <tr><td class="mono">TLS 1.0/1.1</td><td><span class="badge b-red">❌ Deprecated</span></td><td>BEAST, CRIME attacks</td></tr>
+      <tr><td class="mono">TLS 1.2</td><td><span class="badge b-yellow">⚠️ Acceptable</span></td><td>Still widely used</td></tr>
+      <tr><td class="mono">TLS 1.3</td><td><span class="badge b-green">✅ Preferred</span></td><td>Faster, forward secrecy default</td></tr>
+    </table>
+    <table class="rt" style="margin-bottom:0.75rem">
+      <tr><th>Certificate Type</th><th>Validates</th></tr>
+      <tr><td>DV (Domain Validation)</td><td>Domain ownership only</td></tr>
+      <tr><td>OV (Organization Validation)</td><td>Domain + organization</td></tr>
+      <tr><td>EV (Extended Validation)</td><td>Full org identity — green bar</td></tr>
+      <tr><td>Wildcard (*.domain.com)</td><td>All subdomains</td></tr>
+      <tr><td>SAN / UC Cert</td><td>Multiple domains/SANs</td></tr>
+      <tr><td>Self-signed</td><td>No CA trust — internal only</td></tr>
+    </table>
+    <table class="rt">
+      <tr><th>PKI Term</th><th>Meaning</th></tr>
+      <tr><td class="mono" style="color:var(--d3)">CA</td><td>Certificate Authority — issues certificates</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">Root CA</td><td>Top-level CA (offline in HSM)</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">Intermediate CA</td><td>Issues end-entity certs</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">CSR</td><td>Certificate Signing Request</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">CRL</td><td>Certificate Revocation List</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">OCSP</td><td>Online real-time revocation check</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">OCSP Stapling</td><td>Server bundles OCSP response</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">CT (Cert Transparency)</td><td>Public log of issued certs</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">PFS/FS</td><td>Perfect Forward Secrecy</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">HSM</td><td>Hardware Security Module</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">TPM</td><td>Trusted Platform Module</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">RA</td><td>Registration Authority</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">Key Escrow</td><td>Backup of private keys</td></tr>
+    </table>
+  </div>
+
+  <!-- ACCESS CONTROL MODELS -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d4)"></span>Access Control Models</h3>
+    <table class="rt">
+      <tr><th>Model</th><th>Abbr</th><th>How It Works</th><th>Example</th></tr>
+      <tr><td>Discretionary</td><td class="mono" style="color:var(--d4)">DAC</td><td>Owner sets permissions</td><td>Linux chmod, NTFS ACL</td></tr>
+      <tr><td>Mandatory</td><td class="mono" style="color:var(--d4)">MAC</td><td>Labels/clearance levels</td><td>Top Secret, Secret, Classified</td></tr>
+      <tr><td>Role-Based</td><td class="mono" style="color:var(--d4)">RBAC</td><td>Access by job role</td><td>Admin, User, Read-only roles</td></tr>
+      <tr><td>Attribute-Based</td><td class="mono" style="color:var(--d4)">ABAC</td><td>Dynamic policy attributes</td><td>Dept=HR AND time=9-5</td></tr>
+      <tr><td>Rule-Based</td><td class="mono" style="color:var(--d4)">Rule-BAC</td><td>If/then rules on objects</td><td>Firewall ACL rules</td></tr>
+      <tr><td>Zero Trust</td><td class="mono" style="color:var(--d4)">ZTA</td><td>Never trust always verify</td><td>ZTNA, BeyondCorp</td></tr>
+    </table>
+    <div style="margin-top:0.9rem">
+      <table class="rt">
+        <tr><th>Principle</th><th>Meaning</th></tr>
+        <tr><td style="color:var(--green)">Least Privilege</td><td>Only permissions needed for the job</td></tr>
+        <tr><td style="color:var(--green)">Need to Know</td><td>Access only to required information</td></tr>
+        <tr><td style="color:var(--green)">Separation of Duties</td><td>No single person controls entire process</td></tr>
+        <tr><td style="color:var(--green)">Dual Control</td><td>Two people required for sensitive action</td></tr>
+        <tr><td style="color:var(--green)">Job Rotation</td><td>Rotate roles — detect fraud, cross-train</td></tr>
+        <tr><td style="color:var(--green)">Mandatory Vacation</td><td>Force leave — detect fraud</td></tr>
+        <tr><td style="color:var(--green)">Account Audit</td><td>Review access rights periodically</td></tr>
+        <tr><td style="color:var(--green)">Implicit Deny</td><td>Block all unless explicitly allowed</td></tr>
+        <tr><td style="color:var(--green)">Defense in Depth</td><td>Layered security controls</td></tr>
+        <tr><td style="color:var(--green)">Fail Secure</td><td>On failure — deny access (not allow)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- NETWORK SECURITY DEVICES -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d2)"></span>Network Security Devices & Concepts</h3>
+    <table class="rt">
+      <tr><th>Device / Tech</th><th>Function</th></tr>
+      <tr><td class="mono" style="color:var(--d2)">Firewall (Stateless)</td><td>Filter by IP/Port — no session state</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">Firewall (Stateful)</td><td>Tracks connection state (SPI)</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">NGFW</td><td>L7 inspection, app-aware, IDPS, SSL decrypt</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">IDS</td><td>Detect threats — alerts only, passive</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">IPS</td><td>Detect + Block threats — inline, active</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">WAF</td><td>Web Application Firewall — L7 HTTP attacks</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">Proxy (Forward)</td><td>Client → Proxy → Internet (content filter)</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">Proxy (Reverse)</td><td>Internet → Proxy → Server (load balance)</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">NAC</td><td>Network Access Control — posture check</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">Honeypot</td><td>Decoy system to attract attackers</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">Honeynet</td><td>Network of honeypots</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">DMZ</td><td>Buffer zone between public/private</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">SIEM</td><td>Log aggregation + correlation + alerting</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">SOAR</td><td>SIEM + automated response playbooks</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">DLP</td><td>Data Loss/Leak Prevention</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">UTM</td><td>Unified Threat Management — all-in-one</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">SD-WAN</td><td>Software-defined WAN with security policy</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">CASB</td><td>Cloud Access Security Broker</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">ZTNA</td><td>Zero Trust Network Access</td></tr>
+      <tr><td class="mono" style="color:var(--d2)">SASE</td><td>Secure Access Service Edge (cloud-native)</td></tr>
+    </table>
+    <div style="margin-top:0.8rem;font-size:11px;color:var(--muted)">
+      IDS detection types: Signature-based (known threats) · Anomaly-based (deviates from baseline) · Heuristic (behavior analysis) · Behavioral
+    </div>
+  </div>
+
+  <!-- VPN TYPES -->
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d4)"></span>VPN Protocols & Wireless Security</h3>
+    <table class="rt" style="margin-bottom:0.75rem">
+      <tr><th>VPN Protocol</th><th>Port</th><th>Notes</th></tr>
+      <tr><td class="mono" style="color:var(--d4)">IPsec</td><td>UDP 500 (IKE), 4500 (NAT-T), IP 50/51</td><td>AH + ESP — Transport/Tunnel mode</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">SSL/TLS VPN</td><td>TCP 443</td><td>Browser-based, firewall-friendly</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">OpenVPN</td><td>UDP 1194</td><td>Open source, cross-platform</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">WireGuard</td><td>UDP 51820</td><td>Modern, fast, simple</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">L2TP/IPsec</td><td>UDP 1701</td><td>L2TP tunnel + IPsec encryption</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">PPTP</td><td>TCP 1723</td><td>❌ Insecure — do not use</td></tr>
+      <tr><td class="mono" style="color:var(--d4)">GRE</td><td>IP Protocol 47</td><td>Tunneling only — no encryption</td></tr>
+    </table>
+    <table class="rt">
+      <tr><th>Wireless Protocol</th><th>Security</th><th>Notes</th></tr>
+      <tr><td class="mono" style="color:var(--d3)">WEP</td><td><span class="badge b-red">❌ Broken</span></td><td>RC4 stream cipher — trivially cracked</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">WPA</td><td><span class="badge b-red">❌ Weak</span></td><td>TKIP — replaced by WPA2</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">WPA2 Personal</td><td><span class="badge b-yellow">⚠️ OK</span></td><td>AES-CCMP, PSK — KRACK vulnerable</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">WPA2 Enterprise</td><td><span class="badge b-green">✅ Better</span></td><td>802.1X, EAP, RADIUS auth per user</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">WPA3 Personal</td><td><span class="badge b-green">✅ Strong</span></td><td>SAE (Dragonfly) — no PSK brute force</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">WPA3 Enterprise</td><td><span class="badge b-green">✅ Strongest</span></td><td>192-bit suite, forward secrecy</td></tr>
+      <tr><td class="mono" style="color:var(--d3)">802.1X</td><td><span class="badge b-green">✅ NAC</span></td><td>Port-based NAC: supplicant/authenticator/server</td></tr>
+    </table>
+    <div style="margin-top:0.75rem;font-size:11px;color:var(--muted)">
+      EAP types: EAP-TLS (certs both sides) · PEAP (server cert only) · EAP-TTLS · EAP-FAST
+    </div>
+  </div>
+
+</div><!-- /qgrid -->
+
+<!-- ATTACK MATRIX -->
+<div class="sec-title" id="attacks">ATTACK TYPES & THREAT CATEGORIES</div>
+<div class="atk-grid" style="margin-bottom:2rem">
+  <div class="atk-box">
+    <h4>🎭 Social Engineering</h4>
+    <ul class="atk-list">
+      <li><span>Phishing</span> — Deceptive email to steal creds</li>
+      <li><span>Spear Phishing</span> — Targeted phishing (specific person)</li>
+      <li><span>Whaling</span> — Phishing targeting executives (C-level)</li>
+      <li><span>Vishing</span> — Voice/phone phishing</li>
+      <li><span>Smishing</span> — SMS text phishing</li>
+      <li><span>Pharming</span> — Redirect DNS to fake site</li>
+      <li><span>Pretexting</span> — Fake scenario to extract info</li>
+      <li><span>Baiting</span> — USB drop / free download lure</li>
+      <li><span>Tailgating/Piggybacking</span> — Physical follow through door</li>
+      <li><span>Shoulder Surfing</span> — Observe screen/keyboard</li>
+      <li><span>Dumpster Diving</span> — Search trash for info</li>
+      <li><span>Quid Pro Quo</span> — Something for something exchange</li>
+      <li><span>BEC</span> — Business Email Compromise</li>
+      <li><span>Watering Hole</span> — Compromise site victim visits</li>
+    </ul>
+  </div>
+  <div class="atk-box">
+    <h4>🌐 Network Attacks</h4>
+    <ul class="atk-list">
+      <li><span>DoS</span> — Overwhelm single target</li>
+      <li><span>DDoS</span> — Distributed, multiple sources (botnet)</li>
+      <li><span>MitM / MitB</span> — Intercept communications</li>
+      <li><span>ARP Poisoning/Spoofing</span> — Fake MAC→IP mapping</li>
+      <li><span>DNS Poisoning</span> — Corrupt DNS cache</li>
+      <li><span>DNS Hijacking</span> — Redirect DNS responses</li>
+      <li><span>IP Spoofing</span> — Fake source IP address</li>
+      <li><span>Smurf Attack</span> — ICMP amplification DDoS</li>
+      <li><span>Teardrop</span> — Malformed fragmented packets</li>
+      <li><span>Ping of Death</span> — Oversized ICMP packet</li>
+      <li><span>SYN Flood</span> — Half-open TCP connections</li>
+      <li><span>Session Hijacking</span> — Steal session token</li>
+      <li><span>SSL Stripping</span> — Downgrade HTTPS to HTTP</li>
+      <li><span>Evil Twin</span> — Rogue AP same SSID</li>
+      <li><span>Replay Attack</span> — Resend captured auth packet</li>
+      <li><span>Deauthentication</span> — Force 802.11 disconnect</li>
+    </ul>
+  </div>
+  <div class="atk-box">
+    <h4>💉 Application Attacks</h4>
+    <ul class="atk-list">
+      <li><span>SQL Injection (SQLi)</span> — Inject SQL into input</li>
+      <li><span>XSS (Stored)</span> — Persistent malicious script in DB</li>
+      <li><span>XSS (Reflected)</span> — Script in URL/response</li>
+      <li><span>XSS (DOM)</span> — Client-side DOM manipulation</li>
+      <li><span>CSRF/XSRF</span> — Trick authenticated user</li>
+      <li><span>SSRF</span> — Server-Side Request Forgery</li>
+      <li><span>XXE</span> — XML External Entity injection</li>
+      <li><span>Path Traversal</span> — ../../../etc/passwd</li>
+      <li><span>LFI/RFI</span> — Local/Remote File Inclusion</li>
+      <li><span>Command Injection</span> — OS commands via input</li>
+      <li><span>LDAP Injection</span> — Manipulate LDAP queries</li>
+      <li><span>Buffer Overflow</span> — Overflow memory to execute code</li>
+      <li><span>Heap Spray</span> — Fill heap to control exec</li>
+      <li><span>Use-After-Free</span> — Reuse freed memory</li>
+      <li><span>Race Condition</span> — TOCTOU timing attack</li>
+      <li><span>Clickjacking</span> — UI redress, invisible overlay</td></li>
+      <li><span>Open Redirect</span> — Redirect to malicious site</li>
+      <li><span>Insecure Direct Object Ref</span> — IDOR access control bypass</li>
+    </ul>
+  </div>
+  <div class="atk-box">
+    <h4>🦠 Malware Types</h4>
+    <ul class="atk-list">
+      <li><span>Virus</span> — Requires host file, self-replicates</li>
+      <li><span>Worm</span> — Self-propagates, no host needed</li>
+      <li><span>Trojan</span> — Appears legitimate, hides malware</li>
+      <li><span>RAT</span> — Remote Access Trojan (backdoor)</li>
+      <li><span>Rootkit</span> — Hides itself in OS kernel</li>
+      <li><span>Bootkit</span> — Infects MBR/bootloader</li>
+      <li><span>Ransomware</span> — Encrypts files, demands payment</li>
+      <li><span>Spyware</span> — Monitors user activity</li>
+      <li><span>Adware</span> — Displays unwanted ads</li>
+      <li><span>Keylogger</span> — Records keystrokes</li>
+      <li><span>Botnet/Bot</span> — Remote-controlled zombie</li>
+      <li><span>Logic Bomb</span> — Triggered by condition/date</li>
+      <li><span>Fileless Malware</span> — Lives in memory/registry</li>
+      <li><span>PUP/PUA</span> — Potentially Unwanted Program/App</li>
+      <li><span>Backdoor</span> — Unauthorized remote access</li>
+      <li><span>Cryptojacker</span> — Mines crypto using victim resources</li>
+      <li><span>Polymorphic</span> — Changes signature to evade AV</li>
+      <li><span>Metamorphic</span> — Rewrites its own code completely</li>
+    </ul>
+  </div>
+  <div class="atk-box">
+    <h4>🔐 Password / Credential Attacks</h4>
+    <ul class="atk-list">
+      <li><span>Brute Force</span> — Try all combinations</li>
+      <li><span>Dictionary Attack</span> — Wordlist of common passwords</li>
+      <li><span>Rainbow Table</span> — Precomputed hash lookup</li>
+      <li><span>Credential Stuffing</span> — Reuse leaked credentials</li>
+      <li><span>Password Spraying</span> — One password → many accounts</li>
+      <li><span>Pass the Hash</span> — Use NTLM hash without cracking</li>
+      <li><span>Pass the Ticket</span> — Use Kerberos ticket (Golden/Silver)</li>
+      <li><span>Golden Ticket</span> — Forge Kerberos TGT (krbtgt hash)</li>
+      <li><span>Silver Ticket</span> — Forge Kerberos service ticket</li>
+      <li><span>Kerberoasting</span> — Request + crack service tickets</li>
+      <li><span>AS-REP Roasting</span> — Attack no-preauth accounts</li>
+      <li><span>Mimikatz</span> — Extract credentials from LSASS</li>
+      <li><span>Shoulder Surfing</span> — Visual observation</li>
+      <li><span>Birthday Attack</span> — Hash collision probability</li>
+    </ul>
+  </div>
+  <div class="atk-box">
+    <h4>☁️ Cloud & Modern Threats</h4>
+    <ul class="atk-list">
+      <li><span>Misconfiguration</span> — #1 cloud threat (open S3 buckets)</li>
+      <li><span>SSRF in Cloud</span> — Access metadata API 169.254.169.254</li>
+      <li><span>Supply Chain Attack</span> — Compromise vendor/software (SolarWinds)</li>
+      <li><span>API Abuse</span> — Exploit API endpoints</li>
+      <li><span>Cryptojacking</span> — Unauthorized crypto mining</li>
+      <li><span>Container Escape</span> — Break out of Docker/K8s</li>
+      <li><span>Serverless Injection</span> — Code injection in FaaS</li>
+      <li><span>Shadow IT</span> — Unauthorized cloud services</li>
+      <li><span>Insider Threat</span> — Malicious/negligent employee</li>
+      <li><span>Zero-day</span> — Unknown/unpatched vulnerability</li>
+      <li><span>APT</span> — Advanced Persistent Threat (nation-state)</li>
+      <li><span>Living off the Land</span> — Use legit tools (LOLBins)</li>
+      <li><span>Lateral Movement</span> — Move inside network post-compromise</li>
+      <li><span>Privilege Escalation</span> — Gain higher access rights</li>
+    </ul>
+  </div>
+</div>
+
+<!-- INCIDENT RESPONSE -->
+<div class="sec-title" id="ir">INCIDENT RESPONSE LIFECYCLE (NIST SP 800-61)</div>
+<div class="ir-steps" style="margin-bottom:2rem">
+  <div class="ir-step"><div class="ir-step-num">PHASE 1</div><div class="ir-step-name">Preparation</div><div class="ir-step-desc">IRP, playbooks, training, tools, SIEM setup</div></div>
+  <div class="ir-step"><div class="ir-step-num">PHASE 2</div><div class="ir-step-name">Identification / Detection</div><div class="ir-step-desc">SIEM alerts, IDS/IPS, log analysis, threat intel</div></div>
+  <div class="ir-step"><div class="ir-step-num">PHASE 3</div><div class="ir-step-name">Containment</div><div class="ir-step-desc">Short-term (isolate) + Long-term (patch/fix)</div></div>
+  <div class="ir-step"><div class="ir-step-num">PHASE 4</div><div class="ir-step-name">Eradication</div><div class="ir-step-desc">Remove malware, close vuln, clean systems</div></div>
+  <div class="ir-step"><div class="ir-step-num">PHASE 5</div><div class="ir-step-name">Recovery</div><div class="ir-step-desc">Restore services, monitor, verify clean</div></div>
+  <div class="ir-step"><div class="ir-step-num">PHASE 6</div><div class="ir-step-name">Lessons Learned</div><div class="ir-step-desc">Post-incident report, improve process</div></div>
+</div>
+<div class="qgrid" style="margin-bottom:2rem">
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d3)"></span>Digital Forensics Order of Volatility</h3>
+    <table class="rt">
+      <tr><th>Order</th><th>Source</th><th>Volatility</th></tr>
+      <tr><td>1</td><td>CPU registers, cache</td><td style="color:var(--red)">Most volatile</td></tr>
+      <tr><td>2</td><td>RAM / Memory</td><td style="color:var(--red)">Very volatile</td></tr>
+      <tr><td>3</td><td>Network state, connections</td><td style="color:var(--yellow)">Volatile</td></tr>
+      <tr><td>4</td><td>Running processes</td><td style="color:var(--yellow)">Volatile</td></tr>
+      <tr><td>5</td><td>Hard disk / SSD (temp files)</td><td style="color:var(--green)">Less volatile</td></tr>
+      <tr><td>6</td><td>Remote / archived logs</td><td style="color:var(--green)">Persistent</td></tr>
+      <tr><td>7</td><td>Physical config, printouts</td><td style="color:var(--d3)">Least volatile</td></tr>
+    </table>
+    <div class="tip"><strong>Forensics Rule</strong>Collect most volatile first · Preserve chain of custody · Write-blockers for disk imaging · Use Autopsy, FTK, Volatility, Wireshark</div>
+  </div>
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d5)"></span>Threat Intelligence Terms</h3>
+    <table class="rt">
+      <tr><th>Term</th><th>Definition</th></tr>
+      <tr><td class="mono" style="color:var(--d5)">IOC</td><td>Indicator of Compromise (IP, hash, domain)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">IOA</td><td>Indicator of Attack (behavior patterns)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">TTPs</td><td>Tactics, Techniques, Procedures</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">STIX</td><td>Structured Threat Info Expression (format)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">TAXII</td><td>Transport for STIX (sharing protocol)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">MITRE ATT&CK</td><td>Framework of adversary TTPs</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Diamond Model</td><td>Adversary-Capability-Infrastructure-Victim</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Cyber Kill Chain</td><td>Recon→Weaponize→Deliver→Exploit→Install→C2→Actions</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">OSINT</td><td>Open Source Intelligence</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Dark Web TI</td><td>Closed forums, paste sites, leaked credentials</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">ISAC</td><td>Info Sharing Analysis Center (sector-specific)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Threat Actor</td><td>Nation-state, Criminal, Hacktivist, Insider, Script Kiddie</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- COMPLIANCE & FRAMEWORKS -->
+<div class="sec-title" id="compliance">COMPLIANCE FRAMEWORKS & REGULATIONS</div>
+<div class="compliance-grid" style="margin-bottom:2rem">
+  <div class="comp-box">
+    <h4>NIST CSF</h4>
+    <p>Cybersecurity Framework — Identify, Protect, Detect, Respond, Recover</p>
+    <div class="tags"><span class="tag k">Risk-based</span><span class="tag k">Voluntary</span><span class="tag k">All sectors</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>NIST SP 800-53</h4>
+    <p>Security controls for federal information systems (US Gov)</p>
+    <div class="tags"><span class="tag k">FedRAMP</span><span class="tag k">Federal</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>ISO/IEC 27001</h4>
+    <p>International ISMS standard — certifiable framework for info security management</p>
+    <div class="tags"><span class="tag k">ISMS</span><span class="tag k">Certifiable</span><span class="tag k">Global</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>PCI DSS</h4>
+    <p>Payment Card Industry Data Security Standard — protect cardholder data</p>
+    <div class="tags"><span class="tag k">12 requirements</span><span class="tag k">Card data</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>HIPAA</h4>
+    <p>Health Insurance Portability & Accountability Act — protect PHI (US healthcare)</p>
+    <div class="tags"><span class="tag k">PHI</span><span class="tag k">ePHI</span><span class="tag k">Healthcare</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>GDPR</h4>
+    <p>General Data Protection Regulation — EU personal data privacy rights</p>
+    <div class="tags"><span class="tag k">EU</span><span class="tag k">PII</span><span class="tag k">Right to forget</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>SOC 2</h4>
+    <p>Service Org Controls — Trust Service Criteria (Security, Availability, Confidentiality, Processing Integrity, Privacy)</p>
+    <div class="tags"><span class="tag k">Type I/II</span><span class="tag k">SaaS</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>FISMA</h4>
+    <p>Federal Information Security Modernization Act — US federal agency security</p>
+    <div class="tags"><span class="tag k">US Federal</span><span class="tag k">NIST 800-53</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>CIS Controls</h4>
+    <p>18 prioritized security controls for cyber defense (formerly SANS Top 20)</p>
+    <div class="tags"><span class="tag k">Implementation Groups</span><span class="tag k">IG1/2/3</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>CMMC</h4>
+    <p>Cybersecurity Maturity Model Certification — US DoD contractors</p>
+    <div class="tags"><span class="tag k">Level 1/2/3</span><span class="tag k">DoD</span><span class="tag k">CUI</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>COBIT</h4>
+    <p>Control Objectives for Info & Related Technologies — IT governance framework</p>
+    <div class="tags"><span class="tag k">Governance</span><span class="tag k">ISACA</span></div>
+  </div>
+  <div class="comp-box">
+    <h4>CCPA / CPRA</h4>
+    <p>California Consumer Privacy Act — US state privacy law similar to GDPR</p>
+    <div class="tags"><span class="tag k">California</span><span class="tag k">Consumer rights</span></div>
+  </div>
+</div>
+
+<!-- SECURITY TOOLS -->
+<div class="sec-title">SECURITY TOOLS — EXAM ESSENTIAL</div>
+<div class="qgrid" style="margin-bottom:2rem">
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d5)"></span>Scanning & Enumeration Tools</h3>
+    <table class="rt">
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td class="mono" style="color:var(--d5)">Nmap</td><td>Port scanning, OS detection, version scan (-sV)</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Nessus</td><td>Vulnerability scanner — credentialed/uncredentialed</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">OpenVAS</td><td>Open source vulnerability scanner</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Metasploit</td><td>Exploitation framework — pentest</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Burp Suite</td><td>Web app proxy & vulnerability scanner</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">OWASP ZAP</td><td>Open source web app scanner</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Nikto</td><td>Web server vulnerability scanner</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Shodan</td><td>Search engine for internet-connected devices</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">theHarvester</td><td>OSINT — emails, subdomains, IPs</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Maltego</td><td>OSINT visualization and link analysis</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">Recon-ng</td><td>Automated OSINT framework</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">enum4linux</td><td>SMB/Samba enumeration</td></tr>
+      <tr><td class="mono" style="color:var(--d5)">DNSrecon</td><td>DNS enumeration and zone transfer</td></tr>
+    </table>
+  </div>
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--red)"></span>Network Analysis & Monitoring</h3>
+    <table class="rt">
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td class="mono" style="color:var(--red)">Wireshark</td><td>Packet capture & protocol analysis</td></tr>
+      <tr><td class="mono" style="color:var(--red)">tcpdump</td><td>CLI packet capture</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Snort</td><td>Open source IDS/IPS</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Suricata</td><td>High-performance IDS/IPS/NSM</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Zeek (Bro)</td><td>Network traffic analysis framework</td></tr>
+      <tr><td class="mono" style="color:var(--red)">NetFlow / IPFIX</td><td>Network flow data collection</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Splunk</td><td>SIEM — log aggregation and search</td></tr>
+      <tr><td class="mono" style="color:var(--red)">ELK Stack</td><td>Elasticsearch + Logstash + Kibana SIEM</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Nagios / Zabbix</td><td>Network monitoring and alerting</td></tr>
+      <tr><td class="mono" style="color:var(--red)">Syslog / rsyslog</td><td>Centralized log collection</td></tr>
+    </table>
+  </div>
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--green)"></span>Password & Crypto Tools</h3>
+    <table class="rt">
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td class="mono" style="color:var(--green)">Hashcat</td><td>GPU-accelerated hash cracking</td></tr>
+      <tr><td class="mono" style="color:var(--green)">John the Ripper</td><td>Password cracker (CPU-based)</td></tr>
+      <tr><td class="mono" style="color:var(--green)">Hydra / Medusa</td><td>Online brute-force (SSH, FTP, HTTP)</td></tr>
+      <tr><td class="mono" style="color:var(--green)">CrackStation</td><td>Online rainbow table lookup</td></tr>
+      <tr><td class="mono" style="color:var(--green)">Aircrack-ng</td><td>Wireless WEP/WPA key cracking</td></tr>
+      <tr><td class="mono" style="color:var(--green)">Kismet</td><td>Wireless network detection/sniffer</td></tr>
+      <tr><td class="mono" style="color:var(--green)">OpenSSL</td><td>Crypto library — cert/key management</td></tr>
+      <tr><td class="mono" style="color:var(--green)">GPG/PGP</td><td>Email encryption & signing</td></tr>
+      <tr><td class="mono" style="color:var(--green)">VeraCrypt</td><td>Full disk/volume encryption</td></tr>
+      <tr><td class="mono" style="color:var(--green)">Mimikatz</td><td>Windows credential extraction</td></tr>
+      <tr><td class="mono" style="color:var(--green)">CyberChef</td><td>Encode/decode/encrypt/analyze data</td></tr>
+    </table>
+  </div>
+  <div class="qcard">
+    <h3><span class="dot" style="background:var(--d1)"></span>Pentest & Offensive Tools</h3>
+    <table class="rt">
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td class="mono" style="color:var(--d1)">Kali Linux</td><td>Pentest distro (Debian-based)</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Parrot OS</td><td>Alternative pentest distro</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Metasploit</td><td>Exploit framework + meterpreter</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Cobalt Strike</td><td>C2 framework (red team)</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Empire/PowerShell</td><td>Post-exploitation framework</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">BeEF</td><td>Browser Exploitation Framework</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">SQLmap</td><td>Automated SQL injection</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Responder</td><td>LLMNR/NBT-NS poisoning (NTLM capture)</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">BloodHound</td><td>AD attack path visualization</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Impacket</td><td>Python tools — SMB, Kerberos attacks</td></tr>
+      <tr><td class="mono" style="color:var(--d1)">Netcat (nc)</td><td>Network Swiss Army knife — bind/reverse shell</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- MITRE ATT&CK -->
+<div class="sec-title">MITRE ATT&CK FRAMEWORK — TACTICAL PHASES</div>
+<div class="mitre-row" style="margin-bottom:2rem">
+  <div class="mitre-cell"><div class="phase">Reconnaissance</div><ul><li>OSINT</li><li>Scanning</li><li>Social media</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Resource Dev</div><ul><li>Acquire infra</li><li>Create accounts</li><li>Malware</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Initial Access</div><ul><li>Phishing</li><li>Exploit pubfacing</li><li>Supply chain</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Execution</div><ul><li>Script (PS/VBS)</li><li>Macro</li><li>Scheduled task</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Persistence</div><ul><li>Registry run</li><li>Startup folder</li><li>Backdoor</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Priv Escalation</div><ul><li>UAC bypass</li><li>Token impersonation</li><li>DLL injection</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Defense Evasion</div><ul><li>Obfuscation</li><li>LOLBins</li><li>Log tampering</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Cred Access</div><ul><li>Mimikatz</li><li>Kerberoast</li><li>Keylog</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Discovery</div><ul><li>Port scan</li><li>AD enum</li><li>File search</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Lateral Move</div><ul><li>PtH</li><li>RDP</li><li>WMI/PSexec</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Collection</div><ul><li>Data staging</li><li>Screen capture</li><li>Keylogging</li></ul></div>
+  <div class="mitre-cell"><div class="phase">C2 (Command)</div><ul><li>Beaconing</li><li>DNS tunneling</li><li>HTTPS C2</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Exfiltration</div><ul><li>Data compress</li><li>Encrypted xfer</li><li>Steganography</li></ul></div>
+  <div class="mitre-cell"><div class="phase">Impact</div><ul><li>Ransomware</li><li>Wiper</li><li>Defacement</li></ul></div>
+</div>
+
+<!-- DOMAIN CARDS -->
+<div class="sec-title" id="domains">5 DOMAINS — DETAILED BREAKDOWN</div>
+<div id="domain-container"></div>
+
+</div><!-- /wrap -->
+
+<div class="footer">CompTIA Security+ SY0-701 · Complete Reference Guide · All 5 Domains · 90-question exam · 90 min · Passing: 750/900</div>
+
+<script>
+const domains = [
+  {
+    num:"D1", title:"General Security Concepts",
+    pct:"12%", gc:"d1",
+    tip:"Focus: Know controls (preventive/detective/corrective), authentication methods, cryptography fundamentals, PKI, and security frameworks. Know the difference between symmetric/asymmetric and hash algorithms.",
+    keywords:["Security Controls","Preventive Control","Detective Control","Corrective Control","Compensating Control","Directive Control","Physical Controls","Technical Controls","Administrative Controls","Managerial Controls","Operational Controls","Vulnerability","Threat","Risk","Exploit","Zero-day","Attack Surface","Attack Vector","CIA Triad","Non-repudiation","Authentication","Authorization","Accounting","AAA Framework","MFA","2FA","SSO","Biometrics","Smart Card","Token","TOTP","HOTP","PKI","Digital Certificate","CA","Root CA","Intermediate CA","CSR","CRL","OCSP","Certificate Pinning","Key Escrow","HSM","TPM","Symmetric Encryption","Asymmetric Encryption","Hashing","Digital Signature","AES","RSA","ECC","SHA-256","MD5","HMAC","Salting","Key Stretching","PFS","TLS","SSL","Steganography","Obfuscation","Tokenization","Data Masking","Homomorphic Encryption","Quantum Cryptography","Block Cipher","Stream Cipher","IV","Initialization Vector","Key Exchange","Diffie-Hellman","Elliptic Curve"],
+    abbrs:["CIA","AAA","MFA","2FA","SSO","OTP","TOTP","HOTP","FIDO","PKI","CA","RA","CRL","OCSP","CSR","HSM","TPM","TLS","SSL","AES","RSA","ECC","DSA","ECDSA","DH","ECDH","SHA","HMAC","PFS","IV","KDF","PBKDF2","bcrypt","scrypt"],
+    attacks:["Downgrade Attack","Birthday Attack","Collision Attack","Replay Attack","MITM (against PKI)","Certificate Spoofing","Key Compromise"],
+    tools:["OpenSSL","GPG/PGP","Hashcat (hash cracking)","VeraCrypt","CyberChef","KeyPass","1Password","Microsoft CA","Let's Encrypt"],
+    subtopics:[
+      {name:"Security Control Categories",items:["Technical — firewalls, encryption, IDS","Administrative — policies, procedures, training","Physical — locks, cameras, guards, biometric doors","Managerial — risk assessments, security plans"]},
+      {name:"Control Types by Function",items:["Preventive — stop incidents (firewall, MFA, lock)","Detective — identify incidents (IDS, logs, audit)","Corrective — fix after incident (patch, backup restore)","Compensating — alternative when primary can't apply","Deterrent — discourage (warning signs, lights)","Directive — require action (policy, training mandates)"]},
+      {name:"Cryptography Concepts",items:["Confidentiality → Encryption (AES, RSA)","Integrity → Hashing (SHA-256, HMAC)","Non-repudiation → Digital Signatures","Authentication → Certificates + CA trust chain","Key length: longer = stronger but slower","Perfect Forward Secrecy: new key per session (ECDHE)","Salt: random value added before hashing passwords"]},
+      {name:"PKI Trust Chain",items:["Root CA → signs Intermediate CA → signs End-Entity cert","Root CA kept offline in HSM for protection","Revocation: CRL (periodic list) or OCSP (real-time)","Certificate fields: Subject, Issuer, SAN, Validity, Key Usage","Common cert formats: PEM (.pem), DER (.der), PFX/PKCS12 (.pfx)"]}
+    ]
+  },
+  {
+    num:"D2", title:"Threats, Vulnerabilities & Mitigations",
+    pct:"22%", gc:"d2",
+    tip:"Largest attack domain. Know ALL malware types, ALL social engineering attacks, vulnerability scanning vs. penetration testing, threat intelligence sources, and vulnerability management lifecycle.",
+    keywords:["Threat Actor","Nation-State","Hacktivist","Cybercriminal","Insider Threat","Script Kiddie","APT","TTPs","Attack Vector","Attack Surface","Malware","Virus","Worm","Trojan","Ransomware","Spyware","Adware","Keylogger","Rootkit","Bootkit","RAT","Fileless Malware","Logic Bomb","Polymorphic","Metamorphic","Botnet","C2","Backdoor","Cryptojacker","Social Engineering","Phishing","Spear Phishing","Whaling","Vishing","Smishing","Pharming","Pretexting","Baiting","Tailgating","Shoulder Surfing","Dumpster Diving","Watering Hole","Business Email Compromise","SQL Injection","XSS","CSRF","Buffer Overflow","Race Condition","SSRF","XXE","Path Traversal","Command Injection","Clickjacking","IDOR","Zero-day Exploit","CVE","CVSS","NVD","Vulnerability Scanning","Penetration Testing","Threat Intelligence","IOC","IOA","OSINT","Dark Web","Cyber Kill Chain","MITRE ATT&CK","Diamond Model","Threat Hunting","Vulnerability Management","Patch Management","Bug Bounty","Responsible Disclosure","False Positive","False Negative"],
+    abbrs:["APT","TTP","IoC","IOA","CVE","CVSS","NVD","CWE","OWASP","XSS","SQLi","CSRF","SSRF","XXE","IDOR","RCE","LFI","RFI","RAT","C2","C&C","OSINT","STIX","TAXII","ISAC","MITRE","BEC","PUP","PUA"],
+    attacks:["All Social Engineering types","All Malware types","Web App attacks (OWASP Top 10)","Network attacks","Password attacks","Physical attacks","Wireless attacks","Supply Chain attacks","Zero-day exploits"],
+    tools:["Nessus","OpenVAS","Qualys","Nmap","Metasploit","Burp Suite","OWASP ZAP","Shodan","theHarvester","Maltego","Recon-ng","VirusTotal","Hybrid Analysis","Any.run"],
+    subtopics:[
+      {name:"Vulnerability Scanning vs Penetration Testing",items:["Scanning: automated, non-exploiting, identifies vulns","Pentest: authorized manual attempt to exploit vulns","Credentialed scan: authenticated — more thorough results","Uncredentialed scan: external attacker perspective","Black box: no knowledge / Gray box: partial / White box: full","Bug bounty: reward for responsible disclosure"]},
+      {name:"CVSS Score Ranges",items:["0.0: None","0.1–3.9: Low","4.0–6.9: Medium","7.0–8.9: High","9.0–10.0: Critical","CVSS v3 metrics: Attack Vector, Complexity, Privileges, Scope, Impact"]},
+      {name:"Vulnerability Management Lifecycle",items:["1. Identify / Discover assets","2. Scan for vulnerabilities","3. Prioritize (CVSS + business impact)","4. Remediate (patch, config change, compensating control)","5. Verify remediation","6. Report and document"]},
+      {name:"Threat Actor Motivations",items:["Nation-state: espionage, sabotage, IP theft","Cybercriminal: financial gain, ransomware","Hacktivist: political/social agenda","Insider: revenge, financial, negligence","Script kiddie: notoriety, fun","APT: long-term access, sophisticated, well-funded"]}
+    ]
+  },
+  {
+    num:"D3", title:"Security Architecture",
+    pct:"18%", gc:"d3",
+    tip:"Know cloud models (IaaS/PaaS/SaaS/responsibility), Zero Trust architecture, network segmentation, virtualization security, and secure design principles. Understand on-prem vs cloud security differences.",
+    keywords:["Zero Trust","ZTNA","BeyondCorp","Microsegmentation","Network Segmentation","VLAN","DMZ","Air Gap","Firewall","NGFW","WAF","IDS","IPS","Proxy","Reverse Proxy","NAC","802.1X","VPN","Site-to-site VPN","Remote Access VPN","SD-WAN","SASE","CASB","Cloud Security","IaaS","PaaS","SaaS","FaaS","Shared Responsibility","Cloud Access Control","Containerization","Docker","Kubernetes","Serverless","Virtualization","Hypervisor","Type 1 Hypervisor","Type 2 Hypervisor","VM Escape","Snapshot","Cloud Storage","S3 Bucket","Object Storage","Encryption at Rest","Encryption in Transit","Data Classification","Defense in Depth","Secure by Design","Fail Secure","Open Design","Least Privilege","Attack Surface Reduction","Secure Defaults","Network Architecture","Topology","Load Balancing","High Availability","Redundancy","Resilience","RAID","Backup","DR","BCP","RTO","RPO","MTTR","MTBF"],
+    abbrs:["ZTA","ZTNA","SASE","SD-WAN","CASB","IaaS","PaaS","SaaS","FaaS","CSP","VM","VDI","SVM","K8s","API","CDN","WAF","NGFW","NAC","802.1X","DMZ","VLAN","ACL","HA","DR","BCP","RTO","RPO","MTTR","MTBF","RAID"],
+    attacks:["VM Escape","Container Escape","Cloud Misconfiguration","SSRF to Metadata API","Side-Channel attacks","API abuse","Hypervisor attack"],
+    tools:["AWS Security Hub","Azure Security Center","Google Cloud SCC","Terraform (IaC)","Prisma Cloud","Aqua Security","Twistlock","HashiCorp Vault"],
+    subtopics:[
+      {name:"Cloud Service Models & Responsibility",items:["IaaS: You manage OS/App/Data — Provider: hardware, network, facilities","PaaS: You manage App/Data — Provider: OS, runtime, middleware","SaaS: You manage Data/Users — Provider: everything else","Shared Responsibility: always verify what you own vs provider"]},
+      {name:"Zero Trust Principles",items:["Never trust, always verify — even internal users","Assume breach — design for detection and containment","Verify explicitly — identity, device, location, behavior","Least privilege access — just-in-time, just-enough-access","Components: Identity Provider, Policy Engine, Policy Enforcement Point"]},
+      {name:"Network Segmentation",items:["VLAN: Layer 2 logical separation","Subnetting: Layer 3 network separation","Firewall zones: DMZ, Internal, External","Microsegmentation: granular per-workload policies","Air gap: physical network isolation (critical systems)"]},
+      {name:"DR / BCP Key Metrics",items:["RTO: Recovery Time Objective — max downtime acceptable","RPO: Recovery Point Objective — max data loss acceptable","MTTR: Mean Time to Recover (from failure)","MTBF: Mean Time Between Failures","Hot site: fully operational replica (minutes)","Warm site: partial infrastructure (hours)","Cold site: space only, no equipment (days)"]}
+    ]
+  },
+  {
+    num:"D4", title:"Security Operations",
+    pct:"28%", gc:"d4",
+    tip:"LARGEST domain (28%). Focus on hardening, log analysis, endpoint security, identity management, vulnerability response, and security alerting. Know all hardening techniques and monitoring tools.",
+    keywords:["Endpoint Security","EDR","XDR","MDR","AV / Anti-malware","HIDS","HIPS","Application Whitelisting","Blacklisting","Sandboxing","Patch Management","Hardening","Baseline Configuration","CIS Benchmarks","GPO","SELinux","AppArmor","File Integrity Monitoring","FIM","SIEM","SOAR","Log Management","Syslog","CEF","LEEF","Log Aggregation","Correlation Rule","Alert","Playbook","Runbook","Identity Management","IAM","PAM","PIM","Privileged Account","Service Account","Shared Account","Account Provisioning","Account Deprovisioning","Access Review","User Behavior Analytics","UEBA","Directory Services","Active Directory","LDAP","Kerberos","Federation","SAML","OAuth","OpenID Connect","Credential Management","Password Manager","Password Policy","Account Lockout","Monitoring","Performance Baseline","Anomaly Detection","Threat Hunting","Digital Forensics","Chain of Custody","eDiscovery","Incident Response","CSIRT","SOC","Secure Coding","SDLC","DevSecOps","SAST","DAST","IAST","Code Review","Fuzzing","Penetration Testing","Vulnerability Assessment","Configuration Management","Change Management","Asset Management","Data Loss Prevention","Email Security","SPF","DKIM","DMARC","Spam Filter","URL Filtering","DNS Filtering","Mobile Device Management","MDM","MAM","BYOD policy","Containerization Security","Secure Boot","UEFI","TPM","BitLocker","Full Disk Encryption"],
+    abbrs:["EDR","XDR","MDR","AV","HIDS","HIPS","FIM","SIEM","SOAR","SOC","CSIRT","IAM","PAM","PIM","UEBA","UBA","AD","LDAP","SAML","OAuth","OIDC","SSO","GPO","ACL","MDM","MAM","DLP","SPF","DKIM","DMARC","SAST","DAST","IAST","SDLC","CI/CD","IaC","UEFI","TPM","FDE","CEF","LEEF"],
+    attacks:["Lateral movement via AD","Pass-the-Hash","Golden/Silver Ticket","Privilege escalation","Log tampering","Alert fatigue exploitation","Fileless malware evading AV"],
+    tools:["Splunk","ELK Stack","IBM QRadar","Microsoft Sentinel","CrowdStrike","SentinelOne","Carbon Black","Cylance","Tanium","Qualys","Nessus","SolarWinds","Nagios","Tripwire (FIM)","Varonis","BeyondTrust (PAM)","CyberArk (PAM)","Okta","Azure AD","Active Directory","ProofPoint","Mimecast"],
+    subtopics:[
+      {name:"Endpoint Hardening Techniques",items:["Remove unnecessary services/ports/applications","Apply least privilege (no local admin to standard users)","Enable host firewall (Windows Defender / iptables)","Enable FIM (file integrity monitoring)","Application whitelisting (AppLocker)","Disable default accounts (Guest, Administrator rename)","Patch regularly — critical within 48h, high within 30d","Enable secure boot + UEFI + TPM","Full disk encryption (BitLocker/FileVault)","CIS Benchmarks: industry hardening standards"]},
+      {name:"Log Analysis & SIEM",items:["Collect: Windows Event Logs, Syslog, NetFlow, DNS logs","Normalize: convert to common format (CEF, LEEF, JSON)","Correlate: detect patterns across multiple log sources","Alert: trigger on threshold / rule match / anomaly","Investigate: drill down, timeline reconstruction","Respond: manual or SOAR automated playbook","Common event IDs: 4624 (logon), 4625 (failed logon), 4720 (account created), 4672 (admin logon)"]},
+      {name:"Identity & Access Management",items:["Provisioning: create account, assign roles at onboarding","Access review: periodic certification of permissions","Deprovisioning: remove access immediately on termination","PAM: privileged access management (just-in-time)","Service accounts: non-human, rotate creds regularly","Orphaned accounts: no owner — security risk, disable/delete","MFA everywhere especially for privileged accounts"]},
+      {name:"Email Security Controls",items:["SPF: DNS record specifying authorized sending IPs","DKIM: cryptographic signature on email headers","DMARC: policy for failed SPF/DKIM (reject/quarantine/none)","Spam filter + URL rewriting + attachment sandboxing","S/MIME: email encryption + digital signature (certificates)","STARTTLS / SMTPS: encrypt SMTP transport"]}
+    ]
+  },
+  {
+    num:"D5", title:"Security Program Management & Oversight",
+    pct:"20%", gc:"d5",
+    tip:"Policy-heavy domain. Know the hierarchy: Policy → Standard → Procedure → Guideline. Know risk calculation (ALE=ARO×SLE), data classification, privacy laws (GDPR/HIPAA), vendor management, and security awareness.",
+    keywords:["Security Policy","Standard","Procedure","Guideline","Acceptable Use Policy","AUP","Information Security Policy","BYOD Policy","Data Retention Policy","Change Management Policy","Risk Management","Risk Assessment","Risk Identification","Risk Analysis","Risk Treatment","Risk Register","Qualitative Risk","Quantitative Risk","Risk Appetite","Risk Tolerance","Risk Avoidance","Risk Mitigation","Risk Transfer","Risk Acceptance","ALE","ARO","SLE","EF","Asset Value","Threat Likelihood","Business Impact Analysis","BIA","Data Classification","Public","Internal","Confidential","Restricted","Top Secret","PII","PHI","PCI","IP","Data Governance","Data Owner","Data Custodian","Data Processor","Data Subject","Privacy by Design","Data Minimization","Vendor Risk Management","Third-party Risk","SLA","MOU","MSA","NDA","BAA","Questionnaire","SOC 2 Report","Right to Audit","Security Awareness Training","Phishing Simulation","Security Culture","Metrics","KPI","KRI","Audit","Compliance","Governance","GRC","NIST","ISO 27001","PCI DSS","HIPAA","GDPR","SOX","FISMA","Tabletop Exercise","Red Team","Blue Team","Purple Team","Penetration Test Authorization","Rules of Engagement"],
+    abbrs:["AUP","BIA","BCP","DRP","ALE","ARO","SLE","EF","AV","SLA","MOU","MSA","NDA","BAA","GRC","KPI","KRI","PII","PHI","PCI","IP","GDPR","HIPAA","SOX","FISMA","NIST","ISO","PCI-DSS","CMMC","COBIT","DPO","DPA","ROE","SOC","SOC2"],
+    attacks:["Social engineering (insider)","Policy bypass attempts","Third-party/supply chain compromise","Regulatory non-compliance penalties","Social media OSINT against org"],
+    tools:["GRC platforms: ServiceNow GRC, MetricStream, RSA Archer","Risk management: RiskLens, FAIR Model","Awareness training: KnowBe4, Proofpoint Security Awareness","Compliance: Drata, Vanta, Tugboat Logic","Audit: AuditBoard, Galvanize"],
+    subtopics:[
+      {name:"Risk Quantification Formulas",items:["SLE = Asset Value (AV) × Exposure Factor (EF)","ARO = Annual Rate of Occurrence (how often per year)","ALE = SLE × ARO (expected annual loss)","Residual Risk = Inherent Risk − Controls Applied","Risk = Threat × Vulnerability × Impact","Example: Server $100K, EF 40%, ARO 0.5 → SLE=$40K, ALE=$20K"]},
+      {name:"Policy Hierarchy",items:["Policy: high-level directive from management (WHAT)","Standard: specific mandatory requirements (HOW specific)","Procedure: step-by-step instructions (HOW to do it)","Guideline: recommended but not mandatory (best practice)","Baselines: minimum security configuration requirements"]},
+      {name:"Data Classification Levels",items:["Public: no harm if disclosed (press releases, marketing)","Internal/Private: minimal harm (internal docs, procedures)","Confidential/Sensitive: moderate harm (business strategies)","Restricted/Classified: severe harm (trade secrets, PII)","Top Secret/TS-SCI: catastrophic harm (gov classified)"]},
+      {name:"Vendor / Third-Party Risk",items:["Right to audit clause in contracts","SOC 2 Type II report — annual third-party audit","Questionnaire-based assessment (SIG, VSAQ, CAIQ)","NDA: Non-Disclosure Agreement","BAA: Business Associate Agreement (HIPAA)","MOU: Memorandum of Understanding (intent only)","MSA: Master Service Agreement (binding terms)","SLA: Service Level Agreement (performance metrics)"]}
+    ]
+  }
+];
+
+const gc_colors = {d1:"var(--d1)",d2:"var(--d2)",d3:"var(--d3)",d4:"var(--d4)",d5:"var(--d5)"};
+const gc_bgs = {d1:"var(--d1bg)",d2:"var(--d2bg)",d3:"var(--d3bg)",d4:"var(--d4bg)",d5:"var(--d5bg)"};
+const gc_borders = {d1:"var(--d1b)",d2:"var(--d2b)",d3:"var(--d3b)",d4:"var(--d4b)",d5:"var(--d5b)"};
+
+let curFilter = 'all';
+let curSearch = '';
+
+function buildDomains(){
+  const c = document.getElementById('domain-container');
+  let html = '';
+  domains.forEach(d=>{
+    const col = gc_colors[d.gc], bg = gc_bgs[d.gc], bd = gc_borders[d.gc];
+    const subtopicsHtml = d.subtopics.map(st=>`
+      <div class="sub-box">
+        <h4 style="color:${col}">◈ ${st.name}</h4>
+        <ul class="sub-list">${st.items.map(i=>`<li><span>${i}</span></li>`).join('')}</ul>
+      </div>
+    `).join('');
+    html += `
+    <div class="dcard" id="dc${d.num}">
+      <div class="dcard-hdr" onclick="toggleD('${d.num}')">
+        <div class="dcard-icon" style="background:${bg};color:${col};border-color:${bd}">${d.num}</div>
+        <div class="dcard-info">
+          <div class="dcard-domain" style="color:${col}">Domain ${d.num.replace('D','')} · ${d.pct} of Exam</div>
+          <div class="dcard-title">${d.title}</div>
+        </div>
+        <div class="dcard-pct" style="color:${col};background:${bg};border-color:${bd}">${d.pct}</div>
+        <span class="chev" id="cv${d.num}">▼</span>
+      </div>
+      <div class="dcard-body" id="db${d.num}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.25rem">
+          <div class="dsec" id="kw${d.num}">
+            <div class="dsec-label"><span>📘</span> Keywords & Concepts (${d.keywords.length})</div>
+            <div class="tags">${d.keywords.map(t=>`<span class="tag k">${t}</span>`).join('')}</div>
+          </div>
+          <div>
+            <div class="dsec" id="ab${d.num}">
+              <div class="dsec-label"><span>🔤</span> Acronyms / Abbreviations (${d.abbrs.length})</div>
+              <div class="tags">${d.abbrs.map(t=>`<span class="tag a">${t}</span>`).join('')}</div>
+            </div>
+            <div class="dsec" id="atk${d.num}">
+              <div class="dsec-label"><span>⚠️</span> Relevant Attacks / Threats</div>
+              <div class="tags">${d.attacks.map(t=>`<span class="tag t">${t}</span>`).join('')}</div>
+            </div>
+            <div class="dsec" id="tool${d.num}">
+              <div class="dsec-label"><span>🔧</span> Tools & Technologies</div>
+              <div class="tags">${d.tools.map(t=>`<span class="tag tool">${t}</span>`).join('')}</div>
+            </div>
+          </div>
+        </div>
+        <div class="dsec">
+          <div class="dsec-label"><span>📋</span> Key Subtopics — Detailed Breakdown</div>
+          <div class="subtopic-grid">${subtopicsHtml}</div>
+        </div>
+        <div class="tip"><strong>💡 Exam Strategy — ${d.title}</strong>${d.tip}</div>
+      </div>
+    </div>`;
+  });
+  c.innerHTML = html;
+}
+
+function toggleD(num){
+  const b = document.getElementById('db'+num);
+  const cv = document.getElementById('cv'+num);
+  const open = b.classList.toggle('open');
+  cv.textContent = open ? '▲' : '▼';
+}
+
+let curF = 'all';
+function setFilter(el, f){
+  curF = f;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  applyFilter();
+}
+
+function filterDomains(){
+  curSearch = document.getElementById('search').value.toLowerCase().trim();
+  applyFilter();
+}
+
+function applyFilter(){
+  domains.forEach(d=>{
+    const card = document.getElementById('dc'+d.num);
+    if(!card) return;
+    const all = [d.title,...d.keywords,...d.abbrs,...d.attacks,...d.tools,...d.subtopics.flatMap(s=>s.items)].join(' ').toLowerCase();
+    const match = !curSearch || all.includes(curSearch);
+    card.classList.toggle('hidden', !match);
+    if(match && curSearch){
+      document.getElementById('db'+d.num).classList.add('open');
+      document.getElementById('cv'+d.num).textContent='▲';
+    }
+    // Filter by type
+    ['kw','ab','atk','tool'].forEach(id=>{
+      const el = document.getElementById(id+d.num);
+      if(!el) return;
+      if(curF === 'all'){el.style.display=''; return;}
+      const show = (curF==='k' && id==='kw') || (curF==='a' && id==='ab') || (curF==='t' && id==='atk') || (curF==='tool' && id==='tool');
+      el.style.display = show ? '' : 'none';
+    });
+  });
+}
+
+buildDomains();
+</script>
+</body>
+</html>
